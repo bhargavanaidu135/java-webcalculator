@@ -1,0 +1,18 @@
+pipeline {
+     agent any
+
+        stages { 
+
+          stage('compile'){
+            steps{
+                 sh '/usr/share/maven/bin/mvn compile'
+            }
+          }
+          stage('package'){  
+            steps{
+                 sh '/usr/share/maven/bin/mvn package'
+                } 
+           }
+       }
+   }  
+
