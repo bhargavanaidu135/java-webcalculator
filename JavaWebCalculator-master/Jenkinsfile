@@ -1,0 +1,24 @@
+pipeline {
+     agent any
+       tools {
+          //install maven configured as "M3" and add it to the path
+            maven 'M2_HOME'
+        }
+        stages {
+          stage('git checkout'){
+            steps{   
+                   git branch: 'master' , url: 'https://github.com/bhargavanaidu135/java-webcalculator.git'
+            }  
+          }
+          stage('compile'){
+            steps{
+                 sh 'mvn compile'
+            }
+          }
+          stage('package'){  
+            steps{
+                 sh 'mvn package'
+                } 
+           }
+       }
+   } 
